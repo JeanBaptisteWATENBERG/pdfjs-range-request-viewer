@@ -1,26 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, ChangeEvent } from "react";
+import PDFRangeRequestViewer from "./PDFRangeRequestViewer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [url, setUrl] = useState('https://cors-anywhere.herokuapp.com/https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf');
+    return <>
+        PDF Url <input type='text' value={url} onChange={(e: ChangeEvent<HTMLInputElement>) => setUrl(e.target.value)} style={{width: '100%'}} /><br /><br />
+        <PDFRangeRequestViewer url={url} />
+    </>;
 }
-
-export default App;
